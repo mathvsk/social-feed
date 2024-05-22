@@ -128,3 +128,7 @@
     background: var(--wine-100);
     box-shadow: none;
 }
+
+.commentList {
+    margin-top: 2rem;
+}
