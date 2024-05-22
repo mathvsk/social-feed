@@ -1,9 +1,10 @@
 import './global.css'
+import {Header} from "./components/Header.jsx";
 
 export function App() {
   return (
     <>
-        <h1>React App</h1>
+        <Header />
     </>
   )
 }
