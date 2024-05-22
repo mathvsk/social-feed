@@ -9,6 +9,12 @@
     --gray-900: #121214;
 
     --wine-300: #6a283e;
+    --wine-100: #b85a79;
+}
+
+:focus {
+    outline: transparent;
+    box-shadow: 0 0 0 2px var(--wine-300);
 }
 
 * {
