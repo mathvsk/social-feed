@@ -19,6 +19,14 @@ export function Post({ author, content, publishedAt }) {
   const [comments, setComments] = useState([]);
   const [newCommentText, setNewCommentText] = useState('')
 
+  function deleteComment(commentToDelete) {
+    const commentsWithoutDeletedOne = comments.filter(comment => {
+      return comment !== commentToDelete;
+    })
+
+    setComments(commentsWithoutDeletedOne);
+  }
+
   function handleCrateNewComment() {
     event.preventDefault()
 
@@ -78,7 +86,7 @@ export function Post({ author, content, publishedAt }) {
       </form>
       <div className={styles.commentList}>
         {comments.map(comment => {
-          return <Comment key={comment} content={comment} />
+          return <Comment onDeleteComment={deleteComment} key={comment} content={comment} />
         })}
       </div>
     </article>
