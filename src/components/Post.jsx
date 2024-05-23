@@ -8,6 +8,9 @@ import {Avatar} from "./Avatar.jsx";
 import {useState} from "react";
 
 export function Post({ author, content, publishedAt }) {
+  const [comments, setComments] = useState([]);
+  const [newCommentText, setNewCommentText] = useState('')
+
   const publishedDateFormatted = format(publishedAt, "d 'de' LLLL 'às' HH:mm'h'", {
     locale: ptBR,
   });
@@ -15,9 +18,7 @@ export function Post({ author, content, publishedAt }) {
     locale: ptBR,
     addSuffix: true
   });
-
-  const [comments, setComments] = useState([]);
-  const [newCommentText, setNewCommentText] = useState('')
+  const isNewCommentEmpty = newCommentText.length === 0;
 
   function deleteComment(commentToDelete) {
     const commentsWithoutDeletedOne = comments.filter(comment => {
@@ -35,7 +36,12 @@ export function Post({ author, content, publishedAt }) {
   }
 
   function handleNewCommentChange() {
+    event.target.setCustomValidity('');
     setNewCommentText(event.target.value);
+  }
+
+  function handleNewCommentInvalid() {
+    event.target.setCustomValidity('Esse campo é obrigatório!');
   }
 
   return (
@@ -79,9 +85,11 @@ export function Post({ author, content, publishedAt }) {
           placeholder="Deixe um comntário"
           value={newCommentText}
           onChange={handleNewCommentChange}
+          onInvalid={handleNewCommentInvalid}
+          required
         />
         <footer>
-          <button type="submit">Publicar</button>
+          <button type="submit" disabled={isNewCommentEmpty}>Publicar</button>
         </footer>
       </form>
       <div className={styles.commentList}>
