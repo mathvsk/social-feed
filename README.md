@@ -7,6 +7,9 @@
 ![TypeScript](https://img.shields.io/badge/typescript-%23007ACC.svg?style=for-the-badge&logo=typescript&logoColor=white)
 ![Static Badge](https://img.shields.io/badge/MIT-maker?style=for-the-badge&label=License&labelColor=%23303030&color=%23808080)
 
+<img src=".github/social-feed.png">
+
+## Sobre
 Pagina de blog feita com React contendo sua versão em (JS/TS).
 
 ## Tecnologias
